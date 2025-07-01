@@ -46,9 +46,11 @@ function App() {
       if (message.type === 'system') {
         addSystemMessage(message.content);
       } else {
-        addMessage(`${message.userName}: ${message.content}`);
+        // 自分のメッセージかどうかを判断
+        const isMyMessage = message.userId === socket.id;
+        const displayName = isMyMessage ? 'あなた' : message.userName;
+        addMessage(`${displayName}: ${message.content}`);
       }
-      setOnlineUsers(prev => prev); // 仮の更新
     });
 
     // メッセージ履歴
@@ -116,7 +118,6 @@ function App() {
     e.preventDefault();
     if (inputMessage.trim() && socketRef.current && isJoined) {
       socketRef.current.emit('message:send', { content: inputMessage.trim() });
-      addMessage(`あなた: ${inputMessage.trim()}`);
       setInputMessage('');
       
       // タイピング停止通知
