@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* カスタムスタイル */
+@layer components {
+  .message-bubble {
+    @apply p-3 rounded-2xl max-w-xs break-words shadow-soft;
+  }
+  
+  .message-bubble-self {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white ml-auto;
+  }
+  
+  .message-bubble-other {
+    @apply bg-white text-secondary-800 mr-auto border border-secondary-200;
+  }
+  
+  .message-bubble-system {
+    @apply bg-gradient-to-r from-warning-100 to-warning-200 text-warning-800 mx-auto text-center text-sm border border-warning-300;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-secondary-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 disabled:from-secondary-400 disabled:to-secondary-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-medium hover:shadow-strong disabled:shadow-none;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-secondary-50 border border-secondary-300 hover:border-secondary-400 text-secondary-700 font-medium py-2 px-4 rounded-lg transition-all duration-200;
+  }
+  
+  .status-indicator {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .status-online {
+    @apply bg-success-100 text-success-800 border border-success-200;
+  }
+  
+  .status-offline {
+    @apply bg-error-100 text-error-800 border border-error-200;
+  }
+}
+
+/* スクロールバーのスタイリング */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(203 213 225) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgb(203 213 225);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(148 163 184);
+}
+
+/* アニメーション */
+.animate-message-in {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-typing {
+  animation: pulseSoft 1.5s ease-in-out infinite;
+}
